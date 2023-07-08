@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		.btn{
+			height: 30px;
+			width: 30px;
+		}
+	</style>
+</head>
+<body>
+	<table border="1px solid" align="center">
+		<tr>
+			<td colspan="4" id="myScreen" height="35px" style="text-align: right;"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="7" class = "btn" onclick="display(this.value)"></td>
+			<td><input type="button" value="8" class = "btn" onclick="display(this.value)"></td>
+			<td><input type="button" value="9" class = "btn" onclick="display(this.value)"></td>
+			<td><input type="button" value="*" class = "btn" onclick="display(this.value)"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="4" class = "btn" onclick="display(this.value)"></td>
+			<td><input type="button" value="5" class = "btn" onclick="display(this.value)"></td>
+			<td><input type="button" value="6" class = "btn" onclick="display(this.value)"></td>
+			<td><input type="button" value="/" class = "btn" onclick="display(this.value)"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="1" class = "btn" onclick="display(this.value)"></td>
+			<td><input type="button" value="2" class = "btn" onclick="display(this.value)"></td>
+			<td><input type="button" value="3" class = "btn" onclick="display(this.value)"></td>
+			<td><input type="button" value="+" class = "btn" onclick="display(this.value)"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="C" class = "btn" onclick="clearScreen()"></td>
+			<td><input type="button" value="0" class = "btn" onclick="display(this.value)"></td>
+			<td><input type="button" value="-" class = "btn" onclick="display(this.value)"></td>
+			<td><input type="button" value="=" class = "btn" onclick="displayAnswer()"></td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		let a = []
+		function display(num) {
+			j = document.getElementById('myScreen').innerHTML += num
+			a.push(num)
+		}
+		function clearScreen(){
+			document.getElementById('myScreen').innerHTML = ""
+		}
+		console.log(a)
+		function displayAnswer(){
+			while(a.length != 1){
+				n1 = Number(a.pop())
+				sym = a.pop()
+				if (sym != '+' && sym != '-' && sym != '/' && sym != '*'){
+					n1 = parseInt(sym * 10 + n1)
+					sym = a.pop()
+				}
+				
+				n2 = Number(a.pop());
+				ans = evl(n1,sym,n2)
+			}
+			document.getElementById('myScreen').innerHTML = a[0]
+		}
+		function evl(n1,sym,n2){
+			switch(sym){
+				case '+':
+				 i = Number(n1 + n2)
+				 a.push(i)
+				 break;
+				case '-':
+				 i = Number(n2 - n1)
+				 a.push(i)
+				 break;
+				case '*':
+				 i = Number(n1 * n2)
+				 a.push(i)
+				 break;
+				case '/':
+				 i = Number(n2 / n1)
+				 a.push(i)
+				 break;
+			}
+		}
+	</script>
+</body>
+</html>
