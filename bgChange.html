@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <input type = "button" value="Click to Chenge Color" onclick="changeBg()">
+
+        <script>
+            function changeBg(){
+                r = Math.ceil(Math.random()*255)
+                g = Math.ceil(Math.random()*255)
+                b = Math.ceil(Math.random()*255)
+                document.body.style.backgroundColor = "rgb("+r+","+g+","+b+")"
+            }
+        </script>
+    </body>
+</html>
